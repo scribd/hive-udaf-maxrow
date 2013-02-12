@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="hive-udaf-maxrow" default="default">
+    <property name="build" location="build"/>
+    <property name="dist"  location="dist"/>
+    <property name="src"   location="src"/>
+
+    <property environment="env"/>
+
+    <property name="hadoop.home" location="${env.HADOOP_HOME}"/>
+    <property name="hive.home"   location="${env.HIVE_HOME}"/>
+
+    <description>
+        Hive user-defined aggregate function, similar to max() -- but returns related columns too.
+    </description>
+
+    <path id="javac.classpath">
+        <fileset dir="${hadoop.home}">
+            <include name="*.jar"/>
+            <include name="lib/*.jar"/>
+        </fileset>
+        <fileset dir="${hive.home}">
+            <include name="*.jar"/>
+            <include name="lib/*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="default" depends="jar" description="Build jar file by default"/>
+
+    <target name="jar" depends="compile" description="Build jar file">
+        <mkdir dir="${dist}"/>
+        <jar jarfile="${dist}/hive-udaf-maxrow.jar" basedir="${build}"/>
+    </target>
+
+    <target name="compile" description="Compile Java source">
+        <mkdir dir="${build}"/>
+        <javac srcdir="${src}"
+               destdir="${build}"
+               classpathref="javac.classpath"
+               debug="on"
+               includeantruntime="false"
+        />
+    </target>
+
+    <target name="clean" description="clean up">
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+    </target>
+</project>
