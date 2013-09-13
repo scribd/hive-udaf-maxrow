@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.scribd.hive.udaf</groupId>
+	<artifactId>hive-udaf-maxrow</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>hive-udaf-maxrow</name>
+
+	<properties>
+		<hive.version>0.10.0-cdh4.2.0</hive.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.hive</groupId>
+			<artifactId>hive-exec</artifactId>
+			<version>${hive.version}</version>
+		</dependency>
+	</dependencies>
+
+	<!-- Repositories for cloudera -->
+	<repositories>
+		<repository>
+			<id>cloudera</id>
+			<url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+		</repository>
+	</repositories>
+</project>
